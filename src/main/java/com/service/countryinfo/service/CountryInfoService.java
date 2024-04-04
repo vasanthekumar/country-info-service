@@ -16,7 +16,7 @@ public class CountryInfoService {
         return WebClient.builder().baseUrl(countryInfoUrl).build();
     }
 
-    public String getCountryByName(String name){
+    public String getCountryInfo(String name){
         return webClient()
                 .get()
                 .uri("/name/{countryName}",name)
