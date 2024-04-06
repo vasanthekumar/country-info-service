@@ -17,6 +17,7 @@ public class CountryInfoController {
 
     @GetMapping(value = "country/into/{name}")
     public String getCountryInfoByName(@PathVariable String name) {
+        System.out.println("Application Running......");
         return countryInfoService.getCountryInfo(name);
     }
 }
