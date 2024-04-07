@@ -20,7 +20,7 @@ public class CountryInfoController {
     @Autowired
     CountryInfoService countryInfoService;
 
-    @GetMapping(value = "country/into/{name}")
+    @GetMapping(value = "country/info/{name}")
     public ResponseEntity<Object> getCountryInfoByName(@PathVariable String name,@RequestParam String fields) {
         System.out.println("Application Running......" +fields);
         return ResponseHandler.responseBuilder("Requested country details are given here", HttpStatus.OK, countryInfoService.getCountryInfo(name,fields));
