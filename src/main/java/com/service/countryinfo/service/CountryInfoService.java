@@ -13,13 +13,16 @@ public class CountryInfoService {
 
     @Bean
     public WebClient webClient() {
-        return WebClient.builder().baseUrl(countryInfoUrl).build();
+        return WebClient.create(countryInfoUrl);
     }
 
-    public String getCountryInfo(String name){
+    public String getCountryInfo(String name, String fields) {
         return webClient()
                 .get()
-                .uri("/name/{countryName}",name)
+                .uri(uriBuilder -> uriBuilder
+                        .path("/name/{countryName}")
+                        .queryParam("fields", fields)
+                        .build(name))
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
