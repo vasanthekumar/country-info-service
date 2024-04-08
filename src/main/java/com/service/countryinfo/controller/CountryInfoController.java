@@ -23,7 +23,7 @@ public class CountryInfoController {
     CountryInfoService countryInfoService;
 
     @GetMapping(value = "/country/info/{name}")
-    public ResponseEntity<Object> getCountryInfoByName(@PathVariable String name,@RequestParam String fields) {
+    public ResponseEntity<Object> getCountryInfoByName(@PathVariable String name) {
         CountryInfoDTO countryInfoDTO = null;
         try {
             countryInfoDTO = countryInfoService.getCountryInfo(name, Constants.FIELDS_LIST);
