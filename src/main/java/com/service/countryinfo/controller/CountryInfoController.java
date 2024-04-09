@@ -7,10 +7,7 @@ import com.service.countryinfo.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  *
@@ -34,8 +31,8 @@ public class CountryInfoController {
         return ResponseEntity.ok(countryInfoDTO);
     }
 
-    @GetMapping("/error")
-    public ResponseEntity<String> errorEndpoint(){
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<String> errorEndpoint(RuntimeException ex){
         String errorMessage = "Internal Server Error";
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorMessage);
     }

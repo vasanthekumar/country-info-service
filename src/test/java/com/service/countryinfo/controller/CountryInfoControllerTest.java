@@ -12,9 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 @WebMvcTest(CountryInfoController.class)
@@ -45,23 +43,15 @@ class CountryInfoControllerTest {
 
     }
 
-//    @Test
-//    void testGetCountryInfoByName_Throw_Exception() throws Exception {
-//
-//        when(countryInfoService.getCountryInfo(eq("Finland"),eq(Constants.FIELDS))).thenThrow(JsonProcessingException.class);
-//
-//        assertThrows(RuntimeException.class, () -> {
-//            mockMvc.perform(MockMvcRequestBuilders.get("/country/info/Finland"));
-//        });
-//
-//    }
-
     @Test
-    void errorEndpoint() throws Exception {
+    void testGetCountryInfoByName_Throw_Exception() throws Exception {
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/error")
+        when(countryInfoService.getCountryInfo(anyString(),anyString())).thenThrow(JsonProcessingException.class);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/country/info/Finland")
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isInternalServerError());
+                .andExpect(MockMvcResultMatchers.status().isInternalServerError());;
+
     }
 
     private CountryInfoDTO getCountryInfoDTO(){
