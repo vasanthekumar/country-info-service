@@ -2,7 +2,7 @@ package com.service.countryinfo.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.service.countryinfo.dto.CountryInfoDTO;
-import com.service.countryinfo.service.CountryInfoService;
+import com.service.countryinfo.service.CountryInfoServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -22,7 +22,7 @@ class CountryInfoControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private CountryInfoService countryInfoService;
+    private CountryInfoServiceImpl countryInfoService;
 
     @Test
     void testGetCountryInfoByName() throws Exception {

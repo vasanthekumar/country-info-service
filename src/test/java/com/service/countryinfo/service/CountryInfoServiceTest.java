@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 public class CountryInfoServiceTest {
     @Autowired
-    private CountryInfoService countryInfoService;
+    private CountryInfoServiceImpl countryInfoService;
 
     static WireMockServer wireMockServer;
 
