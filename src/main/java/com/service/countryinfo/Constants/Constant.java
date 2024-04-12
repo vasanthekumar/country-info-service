@@ -1,4 +1,4 @@
-package com.service.countryinfo.util;
+package com.service.countryinfo.Constants;
 
 /**
  * Class to define all the Constant.
@@ -6,7 +6,7 @@ package com.service.countryinfo.util;
  * @version 0.0.1
  * Date: April 11,2024
  */
-public class Constants {
+public class Constant {
     //Constant to hold list of fields.
     public static final String FIELDS_LIST = "name,cca2,capital,population,flags";
     //Constant to define field.

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.service.countryinfo.dto.CountryInfoDTO;
-import com.service.countryinfo.util.Constants;
+import com.service.countryinfo.Constants.Constant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,8 +43,8 @@ public class CountryInfoServiceImpl implements CountryInfoService{
         return webClient
                 .get()
                 .uri(uriBuilder -> uriBuilder
-                        .path(Constants.URI_COUNTRY_NAME)
-                        .queryParam(Constants.FIELDS, fields)
+                        .path(Constant.URI_COUNTRY_NAME)
+                        .queryParam(Constant.FIELDS, fields)
                         .build(name))
                 .retrieve()
                 .bodyToMono(String.class)
@@ -55,11 +55,11 @@ public class CountryInfoServiceImpl implements CountryInfoService{
         ObjectMapper objectMapper=new ObjectMapper();
         JsonNode jsonNode = objectMapper.readTree(result);
         JsonNode data = jsonNode.get(0);
-        String countryName = data.get(Constants.NAME).get(Constants.COMMON).asText();
-        String flagUrl = data.get(Constants.FLAGS).get(Constants.SVG).asText();
-        String capital = data.get(Constants.CAPITAL).get(0).asText();
-        String countryCode = data.get(Constants.CCA2).asText();
-        double population = data.get(Constants.POPULATION).asDouble();
+        String countryName = data.get(Constant.NAME).get(Constant.COMMON).asText();
+        String flagUrl = data.get(Constant.FLAGS).get(Constant.SVG).asText();
+        String capital = data.get(Constant.CAPITAL).get(0).asText();
+        String countryCode = data.get(Constant.CCA2).asText();
+        double population = data.get(Constant.POPULATION).asDouble();
         return new CountryInfoDTO(countryName,countryCode,capital,population,flagUrl);
 
     }

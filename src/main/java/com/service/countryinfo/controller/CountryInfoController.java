@@ -3,7 +3,7 @@ package com.service.countryinfo.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.service.countryinfo.dto.CountryInfoDTO;
 import com.service.countryinfo.service.CountryInfoServiceImpl;
-import com.service.countryinfo.util.Constants;
+import com.service.countryinfo.Constants.Constant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @Slf4j
+@RequestMapping(value = "/v1")
 public class CountryInfoController {
 
     /**
@@ -37,7 +38,7 @@ public class CountryInfoController {
         log.info("Calling getCountryInfoByName with the country name : {} ", name );
         CountryInfoDTO countryInfoDTO = null;
         try {
-            countryInfoDTO = countryInfoService.getCountryInfo(name, Constants.FIELDS_LIST);
+            countryInfoDTO = countryInfoService.getCountryInfo(name, Constant.FIELDS_LIST);
             log.info("Return from service call : {} ", countryInfoDTO.toString() );
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
