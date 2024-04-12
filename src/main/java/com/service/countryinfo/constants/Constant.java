@@ -1,4 +1,4 @@
-package com.service.countryinfo.Constants;
+package com.service.countryinfo.constants;
 
 /**
  * Class to define all the Constant.

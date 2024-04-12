@@ -3,7 +3,7 @@ package com.service.countryinfo.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.service.countryinfo.dto.CountryInfoDTO;
 import com.service.countryinfo.service.CountryInfoServiceImpl;
-import com.service.countryinfo.Constants.Constant;
+import com.service.countryinfo.constants.Constant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -39,10 +39,10 @@ public class CountryInfoServiceTest {
         CountryInfoDTO countryInfoDTO = countryInfoService.getCountryInfo("Finland", "name,flags,capital,cca2,population");
 
         // Verify that the expected data is extracted from the response
-        assertEquals("Finland", countryInfoDTO.getName());
-        assertEquals("https://flagcdn.com/fi.svg", countryInfoDTO.getFlagFileUrl());
-        assertEquals("Helsinki", countryInfoDTO.getCapital());
-        assertEquals("FI", countryInfoDTO.getCountryCode());
-        assertEquals(5530719, countryInfoDTO.getPopulation());
+        assertEquals("Finland", countryInfoDTO.name());
+        assertEquals("https://flagcdn.com/fi.svg", countryInfoDTO.flagFileUrl());
+        assertEquals("Helsinki", countryInfoDTO.capital());
+        assertEquals("FI", countryInfoDTO.countryCode());
+        assertEquals(5530719, countryInfoDTO.population());
     }
 }

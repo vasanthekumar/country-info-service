@@ -27,7 +27,7 @@ class CountryInfoControllerTest {
     @Test
     void testGetCountryInfoByName() throws Exception {
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/country/info/Finland")
+        mockMvc.perform(MockMvcRequestBuilders.get("/v1/country/info/Finland")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
 
@@ -37,7 +37,7 @@ class CountryInfoControllerTest {
     void testGetCountryInfoByName_With_Country_Info() throws Exception {
 
         when(countryInfoService.getCountryInfo(anyString(),anyString())).thenReturn(getCountryInfoDTO());
-        mockMvc.perform(MockMvcRequestBuilders.get("/country/info/Finland")
+        mockMvc.perform(MockMvcRequestBuilders.get("/v1/country/info/Finland")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
 
@@ -48,20 +48,13 @@ class CountryInfoControllerTest {
 
         when(countryInfoService.getCountryInfo(anyString(),anyString())).thenThrow(JsonProcessingException.class);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/country/info/Finland")
+        mockMvc.perform(MockMvcRequestBuilders.get("/v1/country/info/Finland")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isInternalServerError());;
 
     }
 
     private CountryInfoDTO getCountryInfoDTO(){
-        CountryInfoDTO country = new CountryInfoDTO();
-        country.setName("Finland");
-        country.setFlagFileUrl("https://flagcdn.com/fi.svg");
-        country.setCapital("Helsinki");
-        country.setCountryCode("FI");
-        country.setPopulation(5530719.0);
-
-        return country;
+        return new CountryInfoDTO("Finland","F1","Helsinki",5530719.0,"https://flagcdn.com/fi.svg");
     }
 }
